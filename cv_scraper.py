@@ -3,11 +3,12 @@ from bs4 import BeautifulSoup
 import mysql.connector
 from datetime import datetime, timedelta
 
+# Get html from page
 result = requests.get("https://cv.ee/search?limit=20&offset=0&categories%5B0%5D=INFORMATION_TECHNOLOGY&towns%5B0%5D=314&isHourlySalary=false")
 src = result.content
 soup = BeautifulSoup(src, 'html.parser')
 
-
+# Connect to previously created database
 db = mysql.connector.connect(
 	host="localhost",
 	user="matthias",
@@ -17,10 +18,11 @@ db = mysql.connector.connect(
 
 mycursor = db.cursor()
 
-# Command for inserting scraped data into listing table. Ignores 'duplicate entry' errors
+# Create command for inserting scraped data into listing table. Ignores 'duplicate entry' errors
 Q1 = "INSERT IGNORE INTO listing (added, position, company, link) VALUES (%s,%s,%s,%s)"
 
 
+# Get data from acquired html
 for class_tag in soup.find_all("div", class_="jsx-1471379408 vacancy-item__content"):
 	link = "https://cv.ee" + class_tag.find('a').attrs["href"]
 	position = class_tag.find("span", class_="jsx-1471379408 vacancy-item__title").text
@@ -42,4 +44,5 @@ for class_tag in soup.find_all("div", class_="jsx-1471379408 vacancy-item__conte
 	# Add scraped data to SQL database
 	mycursor.execute(Q1, (added, position, company, link))
 
+# Commit changes to database
 db.commit()
