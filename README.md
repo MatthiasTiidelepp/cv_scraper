@@ -1,15 +1,15 @@
-This scraper requires MySQL Python connector, BeautifulSoup and a previously created database
+#This scraper requires MySQL Python connector, BeautifulSoup and a previously created database
 
-This video shows how to set up MySQL with Python
+1. This video shows how to set up MySQL with Python
 [Python MySQL Tutorial - Setup & Basic Queries (w/ MySQL Connector)](https://www.youtube.com/watch?v=3vsC05rxZ8c)
 
-To install BeautifulSoup and requests type into console
+2. To install BeautifulSoup and requests type into console
 ```
 pip install beautifulsoup4
 pip install requests
 ```
 
-Below are the commands I used in MySQL Workbench to create the requisite database
+3. Below are the commands I used in MySQL Workbench to create the requisite database
 ```
 CREATE DATABASE db_listing;
 
