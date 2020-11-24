@@ -1,4 +1,5 @@
-#### This scraper requires MySQL Python connector, BeautifulSoup and a previously created database
+## This scraper requires MySQL Python connector, BeautifulSoup and a previously created database
+
 
 - **This video shows how to set up MySQL with Python**
 [Python MySQL Tutorial - Setup & Basic Queries (w/ MySQL Connector)](https://www.youtube.com/watch?v=3vsC05rxZ8c)
